@@ -4,10 +4,21 @@ public class PlayerAlphaMovement : MonoBehaviour
 {
     public GameObject camera;
     public float velocita = 5f;
+    public float sensibilita = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
 
     // Update is called once per frame
+
+    
+ void Update()
+{
+    float mouseX = Input.GetAxis("Mouse X") * sensibilita;
+    float mouseY = Input.GetAxis("Mouse Y") * sensibilita;
+
+    camera.transform.Rotate(Vector3.up, mouseX);
+    transform.Rotate(Vector3.up, mouseX);
+}
     void FixedUpdate()
     {
     float x = Input.GetAxis("Horizontal");
