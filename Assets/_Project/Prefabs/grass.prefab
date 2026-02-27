@@ -84,6 +84,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0188a808c7ecf9645beb53cb1cf5ebed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrassDeath
+  player: {fileID: 0}
+  reach: 10
 --- !u!135 &4498312652959706580
 SphereCollider:
   m_ObjectHideFlags: 0
