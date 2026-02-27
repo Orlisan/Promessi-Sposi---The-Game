@@ -13,7 +13,7 @@ void Start()
     {
         float x = Random.Range(-areaX, areaX);
         float z = Random.Range(-areaZ, areaZ);
-        Instantiate(prefabErba, new Vector3(x, 0, z), Quaternion.identity);
+        Instantiate(prefabErba, new Vector3(x, 0, z), prefabErba.transform.rotation);
     }
 }
 }

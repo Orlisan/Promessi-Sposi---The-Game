@@ -5,8 +5,14 @@ public class PlayerAlphaMovement : MonoBehaviour
     public GameObject camera;
     public float velocita = 5f;
     public float sensibilita = 2f;
+    public Vector3 offset = new Vector3(0, 1, 1);
+    public bool thirdyPerson = false;
+    public float rotazioneX = 0f;
+    public float rotazioneY = 0f;
+    private bool isGrounded = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
+    private long cool = 0;
+    private bool startCool = false;
 
     // Update is called once per frame
 
@@ -16,25 +22,62 @@ public class PlayerAlphaMovement : MonoBehaviour
     float mouseX = Input.GetAxis("Mouse X") * sensibilita;
     float mouseY = Input.GetAxis("Mouse Y") * sensibilita;
 
-    camera.transform.Rotate(Vector3.up, mouseX);
-    transform.Rotate(Vector3.up, mouseX);
+    rotazioneY += mouseX;
+    rotazioneX -= mouseY;
+    rotazioneX = Mathf.Clamp(rotazioneX, -80f, 80f);
+
+    transform.rotation = Quaternion.Euler(0, rotazioneY, 0);
+    camera.transform.localRotation = Quaternion.Euler(rotazioneX, 0, 0);
 }
     void FixedUpdate()
     {
+        if(cool < 300 && startCool) {
+            cool += 50;
+        }else
+        {
+           cool = 0; 
+           startCool = false;
+        }
+
     float x = Input.GetAxis("Horizontal");
     float z = Input.GetAxis("Vertical");
     float y = 0f;
 
 if (Input.GetKey(KeyCode.Space))
 {
-    y = 1f;  
+    y = 3f;  
 }
-if (Input.GetKey(KeyCode.LeftShift))
+if (Input.GetKey(KeyCode.LeftShift) && !isGrounded)
 {
-    y = -1f; 
+    y = -3f; 
 }
+if (Input.GetKey(KeyCode.F5))
+        {if(cool == 0) {
+            if(!thirdyPerson)
+            {
+                offset = new Vector3(0, 5, -10);
+                camera.transform.Rotate(0, -60, 0);
+            }else
+            {
+                 offset = new Vector3(0, 1, 1);
+                 camera.transform.Rotate(0, 0, 0);
+            }
+            
+            thirdyPerson = !thirdyPerson;
+            startCool = true;
+        }
+        }
 Vector3 pos = new Vector3(x, y, z);
 transform.Translate(pos * velocita * Time.fixedDeltaTime);
-camera.transform.position = transform.position + new Vector3(0, 2, 1);
+camera.transform.position = transform.position + transform.TransformDirection(offset);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        isGrounded = true;
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
     }
 }
