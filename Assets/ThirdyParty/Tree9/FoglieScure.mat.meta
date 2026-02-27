@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 760ea8238d6219c42b2739f693d4c834
-timeCreated: 1453363994
+guid: da780beb78a91484aa965294e12f428e
+timeCreated: 1453383789
 licenseType: Store
 NativeFormatImporter:
   userData: 
@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 54622
   packageName: Realistic Tree 9
   packageVersion: 1.0
-  assetPath: Assets/Tree9/bark14.mat
+  assetPath: Assets/ThirdyParty/Tree9/Tree9_leafs.mat
   uploadId: 99758
