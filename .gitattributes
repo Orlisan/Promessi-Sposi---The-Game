@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Indica a GitHub di considerare i file .wlt come dati di Unity e non come codice
+*.wlt linguist-language=Unity3D_Asset
+*.wlt linguist-vendored
