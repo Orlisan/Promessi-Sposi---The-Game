@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAlphaMovement : MonoBehaviour
 {
+    public float quantitàDiVelocitàPersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocitàVieneMoltiplicataPerUnNumeroDecimale = 0.5f; //AVANTI, GIUDICAMI >:(
+    public Rigidbody rb;
+    public float jumpPower = 16;
     public GameObject camera;
     public float velocita = 5f;
     public float sensibilita = 2f;
@@ -29,23 +33,27 @@ public class PlayerAlphaMovement : MonoBehaviour
     transform.rotation = Quaternion.Euler(0, rotazioneY, 0);
     camera.transform.localRotation = Quaternion.Euler(rotazioneX, 0, 0);
 }
-    void FixedUpdate()
-    {
-        if(cool < 300 && startCool) {
-            cool += 50;
-        }else
-        {
-           cool = 0; 
-           startCool = false;
-        }
-
-    float x = Input.GetAxis("Horizontal");
-    float z = Input.GetAxis("Vertical");
-    float y = 0f;
-
-if (Input.GetKey(KeyCode.Space))
+void FixedUpdate()
 {
-    y = 3f;  
+    if(cool < 300 && startCool) {
+        cool += 50;
+    } else
+    {
+       cool = 0; 
+       startCool = false;
+    }
+
+float x = Input.GetAxis("Horizontal");
+float z = Input.GetAxis("Vertical");
+float y = 0f;
+
+if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
+{
+    rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpPower, rb.linearVelocity.z); 
+}
+if (Keyboard.current.spaceKey.wasReleasedThisFrame && rb.linearVelocity.y > 0f)
+{
+    rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * quantitàDiVelocitàPersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocitàVieneMoltiplicataPerUnNumeroDecimale, rb.linearVelocity.z);
 }
 if (Input.GetKey(KeyCode.LeftShift) && !isGrounded)
 {
