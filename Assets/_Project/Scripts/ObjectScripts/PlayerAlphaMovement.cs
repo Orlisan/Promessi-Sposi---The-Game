@@ -14,12 +14,17 @@ public class PlayerAlphaMovement : MonoBehaviour
     public float rotazioneX = 0f;
     public float rotazioneY = 0f;
     private bool isGrounded = false;
+    private bool isPressed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private long cool = 0;
     private bool startCool = false;
 
     // Update is called once per frame
-
+void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
     
  void Update()
 {
@@ -59,6 +64,25 @@ if (Input.GetKey(KeyCode.LeftShift) && !isGrounded)
 {
     y = -3f; 
 }
+if(Keyboard.current.ctrlKey.wasPressedThisFrame)
+        {
+            
+            if(!isPressed)
+            {
+               velocita *= 2; 
+            }
+            isPressed = true;
+        }
+if(Keyboard.current.ctrlKey.wasReleasedThisFrame)
+        {
+            if(isPressed)
+            {
+                velocita /= 2;
+            }
+            isPressed = false;
+            
+        }
+        
 if (Input.GetKey(KeyCode.F5))
         {if(cool == 0) {
             if(!thirdyPerson)
