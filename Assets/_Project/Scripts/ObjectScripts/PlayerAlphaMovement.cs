@@ -125,10 +125,14 @@ camera.transform.position = transform.position + transform.TransformDirection(of
 
     void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.CompareTag("Pavimento")) {
         isGrounded = true;
+        }
     }
     void OnCollisionExit(Collision collision)
     {
+        if(collision.gameObject.CompareTag("Pavimento")) {
         isGrounded = false;
+        }
     }
 }
