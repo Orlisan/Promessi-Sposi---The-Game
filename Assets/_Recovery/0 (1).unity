@@ -882,7 +882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2818f5b1059a5be46a4aed852299e146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAlphaMovement
-  diQuantoLaCameraVieneSpostataAllaRotazioneDellaCameraEffettuataColMouseInTerzaPersona: 0.7
   "quantit\xE0DiVelocit\xE0PersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocit\xE0VieneMoltiplicataPerUnNumeroDecimale": 0.45
   rb: {fileID: 1076682970}
   jumpPower: 12
@@ -890,7 +889,6 @@ MonoBehaviour:
   velocita: 5
   sensibilita: 2
   offset: {x: 0, y: 1, z: 1}
-  thirdyPersonOffset: {x: 0, y: 0, z: -10}
   thirdyPerson: 0
   rotazioneX: 0
   rotazioneY: 0
