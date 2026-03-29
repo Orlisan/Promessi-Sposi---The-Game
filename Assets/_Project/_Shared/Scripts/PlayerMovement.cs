@@ -3,16 +3,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Animator animator;
     public float diQuantoLaCameraVieneSpostataAllaRotazioneDellaCameraEffettuataColMouseInTerzaPersona = 1f;
     public float quantitàDiVelocitàPersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocitàVieneMoltiplicataPerUnNumeroDecimale = 0.5f; //AVANTI, GIUDICAMI >:(
     public Rigidbody rb;
     public float jumpPower = 16;
     public GameObject camera;
     public float velocita = 5f;
+    public bool isJumping;
+    public bool isWalking = false;
     public float sensibilita = 2f;
     public Vector3 offset = new Vector3(0, 1, 1);
     public Vector3 thirdyPersonOffset = new Vector3(0, 0, -10);
     public bool thirdyPerson = false;
+    public bool devMode = false;
     public float rotazioneX = 0f;
     float mouseX = 0f;
     float mouseY = 0f;
@@ -26,12 +30,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
 void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
     
  void Update()
 {
+    if(!devMode) {
     mouseX = Input.GetAxis("Mouse X") * sensibilita;
     mouseY = Input.GetAxis("Mouse Y") * sensibilita;
 
@@ -49,12 +55,11 @@ void Start()
         Vector3 offsetConCorrezioneAltezza = new Vector3(offset.x, offset.y - tangenteProporzionata, offset.z);
         camera.transform.position = transform.position + transform.TransformDirection(offsetConCorrezioneAltezza);
     }
-    
+    }
         
 }
 void FixedUpdate()
-{
-    
+{   
     if(cool < 300 && startCool) {
         cool += 50;
     } else
@@ -66,6 +71,19 @@ void FixedUpdate()
 float x = Input.GetAxis("Horizontal");
 float z = Input.GetAxis("Vertical");
 float y = 0f;
+if(x != 0)
+        {
+            isWalking = true;
+        }else if(x == 0)
+        {
+            isWalking = false;
+        }
+if(z != 0)
+        {
+            isJumping = true;
+        }else {
+            isJumping = false;
+        }
 
 if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
 {
@@ -87,6 +105,10 @@ if(Keyboard.current.ctrlKey.wasPressedThisFrame)
                velocita *= 2; 
             }
             isPressed = true;
+        }
+if(Keyboard.current.ctrlKey.wasPressedThisFrame && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            devMode = !devMode;
         }
 if(Keyboard.current.ctrlKey.wasReleasedThisFrame)
         {
@@ -121,6 +143,10 @@ if (Input.GetKey(KeyCode.F5))
 Vector3 pos = new Vector3(x, y, z);
 transform.Translate(pos * velocita * Time.fixedDeltaTime);
 camera.transform.position = transform.position + transform.TransformDirection(offset);
+    animator.SetBool("isRunning", isPressed);
+    animator.SetBool("isJumping", isJumping);
+    animator.SetBool("isWalking", isWalking);
+    
     }
 
     void OnCollisionEnter(Collision collision)
