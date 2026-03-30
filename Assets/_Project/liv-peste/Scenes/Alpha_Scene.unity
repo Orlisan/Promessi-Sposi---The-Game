@@ -1663,10 +1663,12 @@ MonoBehaviour:
   "quantit\xE0DiVelocit\xE0PersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocit\xE0VieneMoltiplicataPerUnNumeroDecimale": 0.45
   rb: {fileID: 1076682970}
   jumpPower: 12
-  camera: {fileID: 330585543}
+  camera: {fileID: 330585545}
   velocita: 5
+  isJumping: 0
+  isWalking: 0
   sensibilita: 2
-  offset: {x: 0, y: 40, z: 2}
+  offset: {x: 0, y: 45, z: 2}
   thirdyPersonOffset: {x: 0, y: 40, z: -10}
   thirdyPerson: 0
   devMode: 0
@@ -2002,7 +2004,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 605b7728f5c2abe47a9091d1583c5066, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0

@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public float quantitàDiVelocitàPersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocitàVieneMoltiplicataPerUnNumeroDecimale = 0.5f; //AVANTI, GIUDICAMI >:(
     public Rigidbody rb;
     public float jumpPower = 16;
-    public GameObject camera;
+    public Camera camera;
     public float velocita = 5f;
     public bool isJumping;
     public bool isWalking = false;
     public float sensibilita = 2f;
+    
     public Vector3 offset = new Vector3(0, 1, 1);
+    private Vector3 firstyPersonOffset;
     public Vector3 thirdyPersonOffset = new Vector3(0, 0, -10);
     public bool thirdyPerson = false;
     public bool devMode = false;
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
 void Start()
     {
+        firstyPersonOffset = offset;
         animator = GetComponentInChildren<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -71,28 +74,28 @@ void FixedUpdate()
 float x = Input.GetAxis("Horizontal");
 float z = Input.GetAxis("Vertical");
 float y = 0f;
-if(x != 0)
+if(x != 0 || z != 0)
         {
             isWalking = true;
-        }else if(x == 0)
+        }else
         {
             isWalking = false;
-        }
-if(z != 0)
-        {
-            isJumping = true;
-        }else {
-            isJumping = false;
         }
 
 if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
 {
+    isJumping = true;
     rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpPower, rb.linearVelocity.z); 
 }
-if (Keyboard.current.spaceKey.wasReleasedThisFrame && rb.linearVelocity.y > 0f)
+if (Keyboard.current.spaceKey.wasReleasedThisFrame)
 {
+
+    isJumping = false;
+    if(rb.linearVelocity.y > 0f) {
+
     rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * quantitàDiVelocitàPersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocitàVieneMoltiplicataPerUnNumeroDecimale, rb.linearVelocity.z);
 }
+} 
 if (Input.GetKey(KeyCode.LeftShift) && !isGrounded)
 {
     y = -3f; 
@@ -128,7 +131,8 @@ if (Input.GetKey(KeyCode.F5))
                 camera.transform.Rotate(0, -60, 0);
             }else
             {
-                 offset = new Vector3(0, 1, 1);
+                 camera.nearClipPlane = 0.05f;
+                 offset = firstyPersonOffset;
                  camera.transform.Rotate(0, 0, 0);
             }
             
