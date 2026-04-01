@@ -19,15 +19,17 @@ public class MainSlotChecker : MonoBehaviour
     {
         if(MainSlot.transform.childCount > 0)
         {
-            foreach(GameObject item in correlatiItemNellInventario)
+    GameObject childInSlot = MainSlot.transform.GetChild(0).gameObject;
+    
+        foreach(GameObject item in correlatiItemNellInventario)
             {
-                if(item == MainSlot.transform.GetChild(0).gameObject && item != vecchioObject)
+            if(item.name == childInSlot.name && childInSlot != vecchioObject)
                 {
                     int indice = System.Array.IndexOf(correlatiItemNellInventario, item);
-                    if(impugnatura.transform.childCount > 0)
-                    {
-                        Destroy(impugnatura.transform.GetChild(0).gameObject);
-                    }
+                        if(impugnatura.transform.childCount > 0)
+                        {
+                            Destroy(impugnatura.transform.GetChild(0).gameObject);
+                        }
                     
                     Instantiate(modelli[indice], impugnatura.transform);
                     vecchioObject = item;
@@ -35,6 +37,12 @@ public class MainSlotChecker : MonoBehaviour
 
                 }
             }
+        }else
+        {
+            if(impugnatura.transform.childCount > 0)
+                        {
+                            Destroy(impugnatura.transform.GetChild(0).gameObject);
+                        }
         }
     }
 }
