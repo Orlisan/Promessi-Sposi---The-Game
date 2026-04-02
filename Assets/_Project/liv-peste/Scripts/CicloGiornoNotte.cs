@@ -21,11 +21,11 @@ public class CicloGiornoNotte : MonoBehaviour
     }
     IEnumerator Ciclo() {
         while(true) {
-            yield return new WaitForSeconds(1.0f);
-            luce.transform.Rotate(Vector3.right, 1f);
-            RenderSettings.skybox.SetFloat("_Rotation", RenderSettings.skybox.GetFloat("_Rotation") + 1f);
-            rotazione++;
-            if(rotazione == 150f) {
+            yield return new WaitForSeconds(0.1f);
+            luce.transform.Rotate(Vector3.right, 0.1f);
+            RenderSettings.skybox.SetFloat("_Rotation", RenderSettings.skybox.GetFloat("_Rotation") + 0.1f);
+            rotazione += 0.1f;
+            if(rotazione == 75f) {
                 if(èGiorno) {
                     RenderSettings.skybox = tramonto;
                     luce.intensity = 0.5f;
@@ -36,7 +36,7 @@ public class CicloGiornoNotte : MonoBehaviour
                 RenderSettings.skybox = Instantiate(RenderSettings.skybox);
                  DynamicGI.UpdateEnvironment();
             }
-            if(rotazione == 180) {
+            if(rotazione == 90) {
                 èGiorno = !èGiorno;
                 if(!èGiorno) {
                     RenderSettings.skybox = notte;
@@ -49,7 +49,7 @@ public class CicloGiornoNotte : MonoBehaviour
                 }
                 rotazione = 0f;
                 RenderSettings.skybox = Instantiate(RenderSettings.skybox);
-                 DynamicGI.UpdateEnvironment();
+                DynamicGI.UpdateEnvironment();
             }
             
         }
