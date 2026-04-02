@@ -4775,6 +4775,57 @@ Transform:
   - {fileID: 359655876}
   m_Father: {fileID: 1183758658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1996793517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1996793519}
+  - component: {fileID: 1996793518}
+  m_Layer: 0
+  m_Name: CicloGiornoNotte
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1996793518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996793517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50116a349febb3b42960fac8550a3a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CicloGiornoNotte
+  luce: {fileID: 410087040}
+  giorno: {fileID: 2100000, guid: 416ee80c6a09f9b4fb43d9aa43f4a057, type: 2}
+  notte: {fileID: 2100000, guid: d3823126980dd98479f7761e6d47338a, type: 2}
+  alba: {fileID: 2100000, guid: 39d27e80110a983468075fd1868610d7, type: 2}
+  tramonto: {fileID: 2100000, guid: aed657681c6812845bb7736c343b5e9b, type: 2}
+  rotazione: 0
+  "\xE8Giorno": 1
+--- !u!4 &1996793519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996793517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 351.29056, y: 0.5, z: -90.82261}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003911654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,3 +5168,4 @@ SceneRoots:
   - {fileID: 1026241759}
   - {fileID: 573892023}
   - {fileID: 575252956}
+  - {fileID: 1996793519}
