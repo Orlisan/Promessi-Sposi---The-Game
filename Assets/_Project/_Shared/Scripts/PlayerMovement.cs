@@ -48,7 +48,7 @@ void Start()
     rotazioneX -= mouseY;
     rotazioneX = Mathf.Clamp(rotazioneX, -80f, 80f);
 
-    transform.rotation = Quaternion.Euler(0, rotazioneY, 0);
+    transform.rotation = Quaternion.Euler(0, rotazioneY, 0); 
     camera.transform.localRotation = Quaternion.Euler(rotazioneX, 0, 0);
     if(thirdyPerson) {
         
