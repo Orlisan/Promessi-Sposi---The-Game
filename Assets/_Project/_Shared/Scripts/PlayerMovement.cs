@@ -71,8 +71,8 @@ void FixedUpdate()
        startCool = false;
     }
 
-float x = Input.GetAxis("Horizontal");
-float z = Input.GetAxis("Vertical");
+float x = -Input.GetAxis("Horizontal");
+float z = -Input.GetAxis("Vertical");
 float y = 0f;
 if(x != 0 || z != 0)
         {
@@ -145,7 +145,8 @@ if (Input.GetKey(KeyCode.F5))
         }
         }
 Vector3 pos = new Vector3(x, y, z);
-transform.Translate(pos * velocita * Time.fixedDeltaTime);
+Vector3 moveDirection = (transform.forward * z) + (transform.right * x);
+rb.linearVelocity = new Vector3(moveDirection.x * velocita, rb.linearVelocity.y, moveDirection.z * velocita);
 camera.transform.position = transform.position + transform.TransformDirection(offset);
     animator.SetBool("isRunning", isPressed);
     animator.SetBool("isJumping", isJumping);
