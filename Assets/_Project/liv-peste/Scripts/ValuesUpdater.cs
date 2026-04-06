@@ -6,6 +6,7 @@ public class ValuesUpdater : MonoBehaviour
     public Slider sliderPeste;
     public Slider sliderProvvidenza;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject MainSlot;
     public GameObject slot1;
     public GameObject slot2;
     public GameObject slot3;
@@ -13,7 +14,12 @@ public class ValuesUpdater : MonoBehaviour
     public GameObject slot5;
     void Start()
     {
-        
+        Dati.MainSlot = MainSlot;
+        Dati.Slot1 = slot1;
+        Dati.Slot2 = slot2;
+        Dati.Slot3 = slot3;
+        Dati.Slot4 = slot4;
+        Dati.Slot5 = slot5;
     }
 
     // Update is called once per frame

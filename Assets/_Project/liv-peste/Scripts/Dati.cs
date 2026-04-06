@@ -13,4 +13,11 @@ public static class Dati
     public static bool slot3;
     public static bool slot4;
     public static bool slot5;
+
+    public static GameObject MainSlot;
+    public static GameObject Slot1;
+    public static GameObject Slot2;
+    public static GameObject Slot3;
+    public static GameObject Slot4;
+    public static GameObject Slot5;
 }
