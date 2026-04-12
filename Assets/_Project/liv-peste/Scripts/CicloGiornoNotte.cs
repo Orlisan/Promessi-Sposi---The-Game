@@ -25,7 +25,7 @@ public class CicloGiornoNotte : MonoBehaviour
             luce.transform.Rotate(Vector3.right, 0.1f);
             RenderSettings.skybox.SetFloat("_Rotation", RenderSettings.skybox.GetFloat("_Rotation") + 0.1f);
             rotazione += 0.1f;
-            if(rotazione == 75f) {
+            if(rotazione >= 75f && rotazione <= 76f) {
                 if(èGiorno) {
                     RenderSettings.skybox = tramonto;
                     luce.intensity = 0.5f;
@@ -36,7 +36,7 @@ public class CicloGiornoNotte : MonoBehaviour
                 RenderSettings.skybox = Instantiate(RenderSettings.skybox);
                  DynamicGI.UpdateEnvironment();
             }
-            if(rotazione == 90) {
+            if(rotazione >= 90 && rotazione <= 91) {
                 èGiorno = !èGiorno;
                 if(!èGiorno) {
                     RenderSettings.skybox = notte;
