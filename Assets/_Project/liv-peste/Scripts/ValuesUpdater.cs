@@ -28,6 +28,11 @@ public class ValuesUpdater : MonoBehaviour
         sliderPeste.value = Dati.livelloPeste;
         sliderProvvidenza.value = Dati.livelloProvvidenza;
         //CHI GUARDERÀ QUESTO CODICE SAPPIA CHE SAPEVO POTESSI CICLARE E ITERARE, MA NON AVEVO VOGLIA
+        if(MainSlot.transform.childCount > 0) {
+            Dati.mainSlot = true;
+        }else {
+            Dati.mainSlot = false;
+        }
         if(slot1.transform.childCount > 0)
         {
             Dati.slot1 = true;

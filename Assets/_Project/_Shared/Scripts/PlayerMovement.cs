@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Animator animator;
     public float diQuantoLaCameraVieneSpostataAllaRotazioneDellaCameraEffettuataColMouseInTerzaPersona = 1f;
-    public float quantitàDiVelocitàPersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocitàVieneMoltiplicataPerUnNumeroDecimale = 0.5f; //AVANTI, GIUDICAMI >:(
+    public float quantitàDiVelocitàPersaQuandoSiRilasciaIlTastoPerSaltareMaTipoCheLaVelocitàVieneMoltiplicataPerUnNumeroDecimale = 0.5f; 
     public Rigidbody rb;
     public float jumpPower = 16;
     public Camera camera;
@@ -25,11 +25,9 @@ public class PlayerMovement : MonoBehaviour
     public float rotazioneY = 0f;
     private bool isGrounded = false;
     private bool isPressed = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private long cool = 0;
     private bool startCool = false;
 
-    // Update is called once per frame
 void Start()
     {
         firstyPersonOffset = offset;
@@ -71,8 +69,8 @@ void FixedUpdate()
        startCool = false;
     }
 
-float x = -Input.GetAxis("Horizontal");
-float z = -Input.GetAxis("Vertical");
+float x = Input.GetAxis("Horizontal");
+float z = Input.GetAxis("Vertical");
 float y = 0f;
 if(x != 0 || z != 0)
         {
@@ -144,9 +142,11 @@ if (Input.GetKey(KeyCode.F5))
             }   
         }
         }
-Vector3 pos = new Vector3(x, y, z);
+
 Vector3 moveDirection = (transform.forward * z) + (transform.right * x);
-rb.linearVelocity = new Vector3(moveDirection.x * velocita, rb.linearVelocity.y, moveDirection.z * velocita);
+Vector3 targetVelocity = new Vector3(moveDirection.x * velocita, rb.linearVelocity.y + y, moveDirection.z * velocita);
+rb.linearVelocity = targetVelocity;
+
 camera.transform.position = transform.position + transform.TransformDirection(offset);
     animator.SetBool("isRunning", isPressed);
     animator.SetBool("isJumping", isJumping);
