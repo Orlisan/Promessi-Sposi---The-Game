@@ -4,3 +4,5 @@
 *.wlt linguist-language=Unity3D_Asset
 *.wlt linguist-vendored
 *.shader linguist-vendored
+*.hlsl linguist-vendored
+*.hlsli linguist-vendored
