@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public static class Dati
 {
@@ -20,4 +22,8 @@ public static class Dati
     public static GameObject Slot3;
     public static GameObject Slot4;
     public static GameObject Slot5;
+
+    public static Canvas canvas;
+    public static GameObject sfondoDialogo;
+    public static TMP_FontAsset fontDialogo;
 }

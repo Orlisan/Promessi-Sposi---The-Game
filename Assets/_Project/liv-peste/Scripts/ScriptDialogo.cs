@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using TMPro;
 
 public static class ScriptDialogo
 {
-    public static Canvas nonno;
-    public static GameObject padre;
+    public static Canvas nonno = Dati.canvas;
+    public static GameObject padre = Dati.sfondoDialogo;
+    public static TMP_FontAsset fontDialogo = Dati.fontDialogo;
     
     public static bool isPrinting = false;
 
@@ -24,10 +26,12 @@ public static class ScriptDialogo
             isPrinting = true;
             GameObject istanza = Object.Instantiate(padre, nonno.transform);
             GameObject testoObj = new GameObject("Testo");
-            Text testo = testoObj.AddComponent<Text>();
+            TextMeshProUGUI  testo = testoObj.AddComponent<TextMeshProUGUI>();
+            testo.font = fontDialogo;
             testoObj.transform.SetParent(istanza.transform, false);
             testo.color = Color.white;
-            testo.fontSize = 24;
+            testo.fontSize = 5;
+            testo.margin = new Vector4(10, 10, 10, 10);
             RectTransform rect = testo.GetComponent<RectTransform>();
             rect.sizeDelta = new Vector2(padre.GetComponent<RectTransform>().rect.width, padre.GetComponent<RectTransform>().sizeDelta.y);
             char[] charTesto = text.ToCharArray();

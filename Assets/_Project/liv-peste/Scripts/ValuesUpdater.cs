@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ValuesUpdater : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class ValuesUpdater : MonoBehaviour
     public GameObject slot3;
     public GameObject slot4;
     public GameObject slot5;
+
+    public GameObject PrefabDialogo;
+    public Canvas canvas;
+    public TMP_FontAsset fontDialogo;
     void Start()
     {
         Dati.MainSlot = MainSlot;
@@ -20,6 +25,9 @@ public class ValuesUpdater : MonoBehaviour
         Dati.Slot3 = slot3;
         Dati.Slot4 = slot4;
         Dati.Slot5 = slot5;
+        Dati.sfondoDialogo = PrefabDialogo;
+        Dati.canvas = canvas;
+        Dati.fontDialogo = fontDialogo;
     }
 
     // Update is called once per frame
