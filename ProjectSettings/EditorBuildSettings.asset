@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/alpha/Scenes/Alpha_Scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/_Project/liv-peste/Scenes/Main_Scene.unity
+    guid: 972ad7a5ddbce744eb0cb1138a125932
   m_configObjects:
     com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: b63f78698707fa04980ad0c0a4745fdd, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: debc21c90f6163f498b86689072282ee, type: 2}
